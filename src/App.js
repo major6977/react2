@@ -1,4 +1,5 @@
 import "./App.css";
+import { User } from "./User";
 
 function App() {
   const users = [
@@ -23,13 +24,5 @@ function App() {
     </div>
   );
 }
-
-const User = (props) => {
-  return (
-    <div>
-      {props.name} {props.age} {props.building} {props.color}
-    </div>
-  );
-};
 
 export default App;
