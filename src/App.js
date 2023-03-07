@@ -1,21 +1,33 @@
 import "./App.css";
 
 function App() {
+  const users = [
+    { name: "Pedro", age: 21 },
+    { name: "Jake", age: 25 },
+    { name: "Jessica", age: 45 },
+    { building: "Brick", color: "Red", isGreen: false },
+  ];
+
   return (
     <div className="App">
-      <Job salary={100000} position="Ass Hole" company="Liver LLC" />
-      <Job salary={30000} position="Cook" company="White Hastle" />
-      <Job salary={80000} position="Coder" company="Yamazon" />
+      {users.map((user, key) => {
+        return (
+          <User
+            name={user.name}
+            age={user.age}
+            building={user.building}
+            color={user.color}
+          />
+        );
+      })}
     </div>
   );
 }
 
-const Job = (props) => {
+const User = (props) => {
   return (
     <div>
-      <h3>{props.salary}</h3>
-      <h3>{props.position}</h3>
-      <h3>{props.company}</h3>
+      {props.name} {props.age} {props.building} {props.color}
     </div>
   );
 };
