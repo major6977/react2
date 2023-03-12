@@ -1,20 +1,21 @@
 import "./App.css";
-import Axios from "axios";
+import { Planets } from "./Planets.js";
 
 function App() {
-  // fetch ("https://catfact.ninja/fact")
-  // .then((res) => res.json())
-  // .then((data) => {
-  // });
-
-  Axios.get("https://catfact.ninja/fact").then((res) => {
-    console.log(res.data);
-  });
+  const planets = [
+    { name: "Mars", isGasPlanet: false },
+    { name: "Earth", isGasPlanet: false },
+    { name: "Jupiter", isGasPlanet: true },
+    { name: "Venus", isGasPlanet: false },
+    { name: "Neptune", isGasPlanet: true },
+    { name: "Uranus", isGasPlanet: true },
+  ];
 
   return (
     <div className="App">
-      <button> Generate Cat Fact </button>
-      <p> </p>
+      {planets.map((planet, key) => {
+        if (planet.isGasPlanet) return <h1> {planet.name}</h1>;
+      })}
     </div>
   );
 }
