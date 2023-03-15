@@ -1,22 +1,26 @@
 import "./App.css";
-import { Planets } from "./Planets.js";
+import Axios from "axios";
+import { useEffect, useState } from "react";
 
 function App() {
-  const planets = [
-    { name: "Mars", isGasPlanet: false },
-    { name: "Earth", isGasPlanet: false },
-    { name: "Jupiter", isGasPlanet: true },
-    { name: "Venus", isGasPlanet: false },
-    { name: "Neptune", isGasPlanet: true },
-    { name: "Uranus", isGasPlanet: true },
-  ];
+  const [catFact, setCatFact] = useState("");
+
+  const fetchCatFact = () => {
+    Axios.get("https://catfact.ninja/fact").then((res) => {
+      setCatFact(res.data.fact);
+    });
+  };
+
+  useEffect(() => {
+    fetchCatFact();
+  }, []);
 
   return (
     <div className="App">
-      {planets.map((planet, key) => {
-        if (planet.isGasPlanet) return <h1> {planet.name}</h1>;
-      })}
+      <button onClick={fetchCatFact}> Generate Cat Fact </button>
+      <p> {catFact} </p>
     </div>
   );
 }
+
 export default App;
